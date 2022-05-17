@@ -16,3 +16,19 @@
   </tbody>
 </table>
 
+<%= form_with model: @book do |f| %>
+  <h2>New book</h2>
+    <% if @book.errors.any? %>
+    <h3>error (Did not save)</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  <p>Title</p>
+  <%= f.text_field :title %>
+  <p>Opinion</p>
+  <%= f.text_area :body %></br>
+  <%= f.submit 'Create Book' %>
+<% end %>
