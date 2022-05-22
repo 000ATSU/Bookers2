@@ -4,8 +4,10 @@
     <tr>
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
-      <td><%= link_to "Edit" %></td>
-      <td><%= link_to "Destroy" %></td>
-    </tr>   
+      <% if @book.user == current_user %>
+        <td><%= link_to "Edit" %></td>
+        <td><%= link_to "Destroy" %></td>
+      <% end %>
+    </tr>
   </tbody>
 </table>
