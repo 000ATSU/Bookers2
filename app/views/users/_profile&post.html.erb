@@ -1,3 +1,11 @@
+<% if book.errors.any? %>
+  <%= book.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h1>User info</h1>
 <%= image_tag user.get_profile_image(100, 100) %>
 <table>
@@ -10,11 +18,17 @@
     <td><%= user.introduction %></td>
   </tr>
   <tr>
-    <td><%= link_to "edit", edit_user_path(:id) %></td>
+    <td>
+      <% if @book.user == current_user %>
+        <%= link_to "edit", edit_user_path(:id) %>
+      <% else %>
+        <%= link_to "edit", user_path(:id) %>
+      <% end %>
+    </td>
   </tr>
 </table>
 
-<%= form_with model: Book.new do |f| %>
+<%= form_with model: book do |f| %>
   <h2>New book</h2>
   <p>Title</p>
   <%= f.text_field :title %>
