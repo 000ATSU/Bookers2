@@ -19,10 +19,10 @@
   </tr>
   <tr>
     <td>
-      <% if @book.user == current_user %>
+      <% if user == current_user %>
         <%= link_to "edit", edit_user_path(:id) %>
       <% else %>
-        <%= link_to "edit", user_path(:id) %>
+        <%= link_to "edit", user_path(current_user) %>
       <% end %>
     </td>
   </tr>

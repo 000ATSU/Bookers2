@@ -1,11 +1,15 @@
 <p id="notice"><%= notice %></p>
-<%= render 'users/profile&post', user: @user %>
+<%= render 'users/profile&post', user: @user, book: @books %>
 <h1>Book detail</h1>
 <table>
   <tbody>
     <tr>
       <td><%= image_tag @user.get_profile_image(100, 100) %></td>
-      <td><%= @book.title %></td>
+      <td>
+        <%= link_to book_path(@book.id) do %>
+          <%= @book.title %>
+        <% end %>
+      </td>
       <td><%= @book.body %></td>
       <% if @book.user == current_user %>
         <td><%= link_to "Edit", edit_book_path(@book) %></td>
