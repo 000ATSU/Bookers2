@@ -1,25 +1,35 @@
 <p id="notice"><%= notice %></p>
-<%= render 'users/profile&post', user: @user, book: @books %>
-<h1>Books</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @book.each do |book| %>
-    <tr>
-      <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
-      <td>
-        <%= link_to book_path(book.id) do %>
-        <%= book.title %>
-        <% end %>
-      </td>
-      <td><%= book.body %></td>
-    </tr>
-    <% end %>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render 'users/profile&post', user: @user, book: @books %>
+    </div>
+    <div class="col-md-8">
+      <h1>Books</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @book.each do |book| %>
+          <tr>
+            <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
+            <td>
+              <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+              <% end %>
+            </td>
+            <td><%= book.body %></td>
+          </tr>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -8,7 +8,7 @@
 <% end %>
 <h1>User info</h1>
 <%= image_tag user.get_profile_image(100, 100) %>
-<table>
+<table class="table">
   <tr>
     <td>name</td>
     <td><%= user.name %></td>
@@ -19,7 +19,9 @@
   </tr>
   <tr>
     <td>
-      <%= link_to "edit", user == current_user ? edit_user_path(:id) :  user_path(current_user) %>
+      <%= link_to user == current_user ? edit_user_path(:id) :  user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+        <span class="fa-solid fa-gear"></span>
+      <% end %>
     </td>
   </tr>
 </table>
