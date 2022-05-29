@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-# before_action :ensure_current_user, {only: [:edit, :update]}
+before_action :ensure_current_user, {only: [:edit, :update]}
 
   def new
     @book = Book.new
@@ -53,10 +53,12 @@ private
     params.require(:book).permit(:title, :body, :user_id)
   end
 
-  # def ensure_current_user
-  #   if User.find(params[:id]) != current_user
-  #     redirect_to books_path
-  #   end
-  # end
+  def ensure_current_user
+    @book = Book.find(params[:id])
+    @user = @book.user
+    if @user != current_user
+      redirect_to books_path
+    end
+  end
 
 end
