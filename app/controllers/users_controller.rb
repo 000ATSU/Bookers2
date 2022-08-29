@@ -20,14 +20,13 @@ before_action :ensure_current_user, {only: [:edit, :update]}
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'You have updated user successfully.'
+      redirect_to user_path(@user), notice: "You have updated user successfully."
     else
       render :edit
     end
   end
 
 private
-
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
